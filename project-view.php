@@ -70,17 +70,33 @@ $url = $protocol . $_SERVER['HTTP_HOST'];
             <h2>Code</h2>
             <div class="code__grid">
                 <div class="code__container">
-                    <pre
-                        class="code markup"><code><?php echo htmlspecialchars(file_get_contents($markup)); ?></code></pre>
+                    <?php if (!is_null($markup)) { ?>
+                        <pre
+                            class="code markup"><code><?php echo htmlspecialchars(file_get_contents($markup)); ?></code></pre>
+                    <?php } else { ?>
+                        <p>Kein HTML benötigt</p>
+                    <?php } ?>
                 </div>
                 <div class="code__container">
-                    <pre class="code js"><code><?php echo file_get_contents($js); ?></code></pre>
+                    <?php if (!is_null($js)) { ?>
+                        <pre class="code js"><code><?php echo file_get_contents($js); ?></code></pre>
+                    <?php } else { ?>
+                        <p>Kein JavaScript benötigt</p>
+                    <?php } ?>
                 </div>
                 <div class="code__container">
-                    <pre class="code scss"><code><?php echo file_get_contents($scss); ?></code></pre>
+                    <?php if (!is_null($scss)) { ?>
+                        <pre class="code scss"><code><?php echo file_get_contents($scss); ?></code></pre>
+                    <?php } else { ?>
+                        <p>Kein Styling benötigt</p>
+                    <?php } ?>
                 </div>
                 <div class="code__container">
-                    <pre class="code css"><code><?php echo file_get_contents($css); ?></code></pre>
+                    <?php if (!is_null($css)) { ?>
+                        <pre class="code css"><code><?php echo file_get_contents($css); ?></code></pre>
+                    <?php } else { ?>
+                        <p>Kein Styling benötigt</p>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -101,45 +117,47 @@ $url = $protocol . $_SERVER['HTTP_HOST'];
     hljs.initLineNumbersOnLoad();
 
     document.querySelectorAll('.code__container').forEach((block) => {
-        const copyButton = document.createElement('button');
-        copyButton.className = 'copy-button';
-        copyButton.innerHTML = 'Kopieren';
+        if (block.querySelector('code')) {
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button';
+            copyButton.innerHTML = 'Kopieren';
 
-        copyButton.addEventListener('click', () => {
-            const code = block.querySelector('code');
+            copyButton.addEventListener('click', () => {
+                const code = block.querySelector('code');
 
-            // copy with fallback
-            try {
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(code.innerText);
-                    console.log('copied by navigator.clipboard');
-                } else {
-                    const textArea = document.createElement('textarea');
-                    textArea.value = code.innerText;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
+                // copy with fallback
+                try {
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(code.innerText);
+                        console.log('copied by navigator.clipboard');
+                    } else {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = code.innerText;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
 
-                    console.log('copied by document.execCommand');
+                        console.log('copied by document.execCommand');
+                    }
+
+                    copyButton.innerHTML = 'Kopiert!';
+
+                    setTimeout(() => {
+                        copyButton.innerHTML = 'Kopieren';
+                    }, 2000);
+                } catch (e) {
+                    console.log('copy failed');
+                    copyButton.innerHTML = 'Fehler';
+
+                    setTimeout(() => {
+                        copyButton.innerHTML = 'Kopieren';
+                    }, 2000);
                 }
+            });
 
-                copyButton.innerHTML = 'Kopiert!';
-
-                setTimeout(() => {
-                    copyButton.innerHTML = 'Kopieren';
-                }, 2000);
-            } catch (e) {
-                console.log('copy failed');
-                copyButton.innerHTML = 'Fehler';
-
-                setTimeout(() => {
-                    copyButton.innerHTML = 'Kopieren';
-                }, 2000);
-            }
-        });
-
-        block.appendChild(copyButton);
+            block.appendChild(copyButton);
+        }
     });
 </script>
 

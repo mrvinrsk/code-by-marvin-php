@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popups | CodeByMarvin</title>
+
+    <link rel="stylesheet" href="/style/css/global.min.css">
+
+    <style>
+        /* Only for demonstration, no CSS needed */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html body {
+            font-family: sans-serif;
+            line-height: 160%;
+            color: #333 !important;
+        }
+
+        section {
+            position: relative;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background-color: #f2f2f2;
+            padding-block: 3rem;
+        }
+
+        section:nth-child(even) {
+            background-color: #c6c6c6;
+            color: #f2f2f2;
+        }
+
+        section > div {
+            width: min(90%, 600px);
+        }
+
+        section .fixed {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0.5em 1em;
+            background-color: #E6E6E6;
+            border-top-left-radius: 1vmin;
+        }
+
+        code {
+            display: block;
+            padding: 0.5em 1em;
+            background-color: #e9e9e9;
+            border-radius: 1vmin;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        code.inline {
+            display: inline;
+            padding: 0.1em 0.3em;
+            margin: 0;
+        }
+
+        .o {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        table {
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+
+        table tr:nth-child(2n+1) {
+            background-color: #C9C9C9;
+        }
+
+        table tr:first-child {
+            background-color: #37ABBA;
+        }
+
+        table th,
+        table td {
+            padding: 0.25em 0.5em;
+        }
+
+        table td:nth-child(2) {
+            width: 60%;
+        }
+    </style>
+
+    <script src="/projects/scroll-utility/needed.js"></script>
+</head>
+<body>
+
+<section id="first">
+    <p class="scroll" data-target="+section">Click to scroll to the next section</p>
+
+    <p class="fixed scroll" data-target="+.explanation">Explanation on the last section (click)</p>
+</section>
+<section>
+    <div class="o">
+        <p class="scroll" data-target="-section">Click to scroll to the previous section</p>
+        <p class="scroll" data-target="+section">Click to scroll to the next section</p>
+    </div>
+</section>
+<section>
+    <p class="scroll" data-target="+.explanation">Explanation</p>
+</section>
+<section>
+    <p class="scroll" data-target="#first">Click to scroll to the first section</p>
+</section>
+<section class="explanation">
+    <div>
+        <h2>How does it work?</h2>
+        <p>
+            Actually, it is pretty simple! (Otherwise you wouldn't be here)
+        </p>
+
+        <p>To create a scroll-element you just need a normal HTML element with the class <code
+                class="inline">scroll</code>.</p>
+
+        <code>&lt;p class="scroll"&gt;Text here&lt;/p&gt;</code>
+
+        <p>And to that, you can just add a data-attribute, called <code class="inline">target</code>. So you have:
+        </p>
+
+        <code>&lt;p class="scroll" data-target="#hello"&gt;Text here&lt;/p&gt;</code>
+
+        <p>As you might notice, the value of the target attribute is <code class="inline">#hello</code>. This means,
+            that, if you click on it, you'll scroll to the element with the id <code class="inline">hello</code></p>
+
+        <p>There are a few more options to get explored:</p>
+
+        <table>
+            <tr>
+                <th>Option (data-target="<code class="inline">...</code>")</th>
+                <th>Explanation</th>
+            </tr>
+
+            <tr>
+                <td><code class="inline">+section</code></td>
+                <td>The next element of type section, starting from the element being clicked on.</td>
+            </tr>
+
+            <tr>
+                <td><code class="inline">-.hello</code></td>
+                <td>The closest previous element with the class <code class="inline">hello</code>, starting from the
+                    element being clicked on.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code class="inline">span</code></td>
+                <td>The first span element on the page</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+</body>
+</html>

@@ -30,6 +30,7 @@ $url = $protocol . $_SERVER['HTTP_HOST'];
     <base href='/'>
 
     <link rel="stylesheet" href="style/css/global.min.css">
+    <link rel="stylesheet" href="style/css/example-view.min.css">
 
     <style>
         .back__to__main {
