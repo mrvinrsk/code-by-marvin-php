@@ -25,7 +25,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5em;
 }
 
-button {
+button, .button {
+  display: inline-block;
+  text-decoration: none;
   cursor: pointer;
   background: var(--col-primary);
   color: #FFF;
