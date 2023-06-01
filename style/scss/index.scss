@@ -12,7 +12,7 @@
     }
 
     &:not(:last-child) {
-      border-bottom: 1px solid #CCC;
+      border-bottom: 1px solid var(--col-gray);
     }
 
     strong {

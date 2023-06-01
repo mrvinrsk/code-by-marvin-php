@@ -9,11 +9,18 @@
 body {
   background: #1E1E1E;
   color: #FAFAFA;
+}
+
+:root {
   font-family: sans-serif;
 }
 
 main {
-  width: min(90%, 900px);
+  width: min(90%, 1400px);
   margin-inline: auto;
   padding-block: min(7.5vw, 5rem);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5em;
 }

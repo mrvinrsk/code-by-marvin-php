@@ -1,0 +1,7 @@
+@use "utils";
+
+iframe {
+  width: 100%;
+  height: 80vh;
+  border: 2px solid var(--col-gray);
+}

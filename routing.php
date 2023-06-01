@@ -1,4 +1,5 @@
 <?php
+include_once "php/Router.php";
 $route = new Router();
 
 $route->add("/", "index.php");

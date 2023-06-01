@@ -12,6 +12,8 @@
     <body>
 
         <main>
+            <h1>Alle Projekte</h1>
+
             <ul class='projects'>
                 <li class='project'>
                     <a href='/popups'>
