@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popups | CodeByMarvin</title>
+
+    <link rel="stylesheet" href="/style/css/global.min.css">
+    <link rel="stylesheet" href="/projects/stepsets/needed.css">
+
+    <script src='/projects/stepsets/needed.js'></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: #101010;
+            color: #efefef;
+        }
+
+        a {
+            color: #37abba;
+            transition-duration: 0.15s;
+        }
+
+        a:hover {
+            color: #92d6df;
+        }
+
+        .step-set {
+            margin-top: 3rem;
+            background-color: #303030;
+        }
+
+        .step {
+            padding: 3rem;
+        }
+
+        p:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
+
+        .subbox {
+            padding: 1rem;
+            background-color: #202020;
+            margin-block: 1.5rem;
+        }
+
+        .button-set {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        @media screen and (min-width: 768px) {
+            .button-set {
+                flex-direction: row;
+            }
+        }
+
+        button {
+            padding: 0.85em 2.75em;
+            background-color: #37abba;
+            border: none;
+            color: #efefef;
+            font-weight: 600;
+            transition-duration: 0.15s;
+        }
+
+        button:hover {
+            background-color: #efefef;
+            color: #37abba;
+        }
+
+        button.full {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #37abba;
+            margin-bottom: 0.5em;
+        }
+
+        ul {
+            margin-block: 1rem 1.5rem;
+            list-style-position: inside;
+            list-style-type: disc;
+        }
+
+        ul:last-child {
+            margin-bottom: 0;
+        }
+
+        ul ul {
+            margin-left: 2rem;
+        }
+
+        ul ul li:not(:last-child) {
+            margin-bottom: 0.15em;
+        }
+
+        ul li:not(:last-child) {
+            margin-bottom: 0.75em;
+        }
+
+        .step :is(h3, h4, h5, h6) {
+            margin-top: 4.5em;
+        }
+
+        :root {
+            line-height: 175%;
+            font-weight: 300;
+        }
+
+        strong, h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        code, pre {
+            font-family: "Noto Sans Mono", monospaced;
+            font-size: 0.8rem;
+        }
+
+        .subbox + p {
+            margin-top: 2.85rem;
+        }
+
+        :is(p, li, a, span) :is(code, pre) {
+            font-size: 0.9rem;
+            background-color: #252525;
+            padding: 0.15em 0.4em;
+        }
+
+        .variable {
+            color: #ee55ff;
+        }
+
+        .underline {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="step-set">
+        <div class="step start active" id="start">
+            <h2>#start</h2>
+            <p>
+                I'm happy to see you here.
+            </p>
+
+            <p>
+                It was a rocky road getting this to work, but it was really fun. Now I just hope that I can help other
+                people with this snippet, who might not be that experienced in JavaScript to code something like this.
+                This code snippet is probably far from perfect, but it works. I may venture into it again in the future
+                to make it more efficient, but for now it'll do as it is.
+            </p>
+
+            <div class="button-set">
+                <button data-step="learn-more">Learn more</button>
+                <button data-step="changelog">Changelog</button>
+            </div>
+        </div>
+
+        <div class="step changelog">
+            <h2>Changelog</h2>
+
+            <ul>
+                <li>
+                    Fixed a bug where, on pages with multiple step-sets, each after the first one would get the wrong
+                    size.
+                </li>
+            </ul>
+
+            <div class="button-set">
+                <button data-step="start">Back</button>
+            </div>
+        </div>
+
+        <div class="step learn-more" id="introduction">
+            <h2>Why this?</h2>
+            <p>
+                Well, I was a bit too bored, needed something like this, wanted to mess around with JavaScript a bit and
+                alternatively wouldn't have really known what to look for to find something like this.... so I did it
+                myself!
+            </p>
+
+            <p>
+                Want to know, how it works? Choose a documentation:
+            </p>
+
+            <div class="button-set">
+                <button data-next-step="simple-documentation">Simple</button>
+                <button data-next-step="complex-documentation">Complex</button>
+            </div>
+        </div>
+
+        <div class="step simple-documentation">
+            <h2>Quick and Dirty</h2>
+            <p>
+                The Markup of a step-set is pretty simple actually!
+            </p>
+
+            <div class="subbox">
+                <code>
+          <pre>
+&lt;div class="step-set"&gt;
+  &lt;div class="step <span class="variable">NAME</span>"&gt;
+    &lt;h2&gt;Content here&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </code>
+            </div>
+
+            <p>
+                Where <span class="variable">NAME</span> is the name for this step. More on that in the <span
+                    class="underline" data-step="complex-documentation">complex documentation</span>.
+            </p>
+
+            <p>
+                Of course you have to link the stylesheet and the JavaScript code in the <code>&lt;head&gt;</code>
+                before. Here's how you can do that:
+            </p>
+
+            <div class="subbox">
+                <code>
+          <pre>
+&lt;link rel="stylesheet" href="stepsets.css"&gt;
+&lt;script src="stepsets.js"&gt;&lt;/script&gt;</pre>
+                </code>
+            </div>
+
+            <p>Please be aware, that these step-sets need <a href="https://code.jquery.com/" target="_blank">jQuery</a>
+                in order to be fully functional.</p>
+            <p>When all of this is ready and set-up you just have to fill in your contents. To change the current step
+                you just have to add e.g. a button with the attribute <code>data-step-next</code> or <code>data-step-next</code>,
+                for more specific changes you may use the <code>data-step</code> attribute, which is explained more
+                detailed in the <span class="underline" data-step="complex-documentation">complex documentation</span>.
+            </p>
+
+            <button class="full" data-step="credits">Credits</button>
+        </div>
+
+        <div class="step complex-documentation">
+            <h2>More of a deep-dive</h2>
+            <p>
+                Firstly, to get started, we need our markup in HTML, which happens to be really self-explanatory:
+            </p>
+
+            <div class="subbox">
+                <code>
+          <pre>
+&lt;div class="step-set"&gt;
+  &lt;div class="step <span class="variable">NAME</span>"&gt;
+    &lt;h2&gt;Content here&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </code>
+            </div>
+
+            <p>
+                You may notice the <span class="variable">NAME</span> in this snippet of code. This will be explained <a
+                    href="#name-variable">further down</a>, for now remember that this will be the name of this step.
+            </p>
+
+            <p>
+                As you would with any other code-snippet, you logically have to link the needed files for this snippet
+                in your <code>&lt;head&gt;</code>, too.
+            </p>
+
+            <div class="subbox">
+                <code>
+          <pre>
+&lt;link rel="stylesheet" href="stepsets.css"&gt;
+&lt;script src="stepsets.js"&gt;&lt;/script&gt;</pre>
+                </code>
+            </div>
+
+            <p>Please be aware, that these step-sets need <a href="https://code.jquery.com/" target="_blank">jQuery</a>
+                in order to be fully functional.</p>
+            <p>When all of this is ready and set-up you just have to fill in your contents. To change the current step
+                you just have to add e.g. a button with the attribute <code>data-step-next</code> or <code>data-step-next</code>,
+                for more specific changes you may use the <code>data-step</code> attribute, which is explained more
+                detailed <span class="underline" data-step="navigation">here</span>. <strong>Important notice:</strong>
+                The <code>data-step-next</code>, <code>data-step-next</code> and <code>data-step</code> attributes will
+                only work, if you're using them inside of a step-set. If you want to place them outside of it, you have
+                to add <code>data-step-set="<span class="variable">NAME</span>"</code> additionally, so the button knows
+                which step-set it belongs to, if you don't do this, the button will navigate the closest step-set from
+                its position in the DOM.</p>
+
+            <h3>More information</h3>
+            <div class="button-set">
+                <button data-step="navigating">Navigating</button>
+            </div>
+
+            <button class="full" data-step="credits">Credits</button>
+        </div>
+
+        <div class="step navigating">
+            <div id="navigating">
+                <h2>Navigating</h2>
+                <p>It's pretty simple to change the currently active step of a step-set. There are two ways to do
+                    that:</p>
+                <ul>
+                    <li><strong>Through JavaScript</strong> by using the <code>stepset_set_active(<span
+                            class="variable">stepset</span>, <span class="variable">step</span>)</code> function, which
+                        can be found in the JS-file. Important is, that the function doesn't take the <span
+                                class="variable">NAME</span> of the wanted step, as an argument for <span
+                                class="variable">step</span>, instead it needs the HTML-Element of the step itself. So I
+                        would recommend to only use this variant in external JS-files.
+                    </li>
+
+                    <li><strong>Through data-attributes:</strong> There are three data-attributes, which can be used:
+                        <ul>
+                            <li><code>data-previous-step</code>: Used to change to the previous step in the DOM.</li>
+                            <li><code>data-next-step</code>: Is used to change to the next step in the DOM, and</li>
+
+                            <li id="name-variable"><code>data-step="<span class="variable">NAME</span>"</code>: Can be
+                                used to change to a specific step by specifying its name.
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="full" data-step="credits">Credits</button>
+        </div>
+
+        <div class="step credits">
+            <h2>Credits</h2>
+            <p>
+                The code for this element was written by me with a little help from <a
+                    href="https://chat.openai.com/chat" target="_blank">ChatGPT by OpenAI</a>, a real life-savior, for a
+                few small JavaScript problems.
+            </p>
+
+            <p>
+                <strong>Thank you sincerely, for taking your time to read this documentation and for hopefully using my
+                    snippet.</strong>
+            </p>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
