@@ -1,3 +1,12 @@
+<?php
+include_once "php/util.php";
+
+$root = $_SERVER['DOCUMENT_ROOT'];
+$parentDir = $root . '/projects';
+$dirs = getDirs($parentDir);
+?>
+
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,25 +24,37 @@
             <h1>Alle Projekte</h1>
 
             <ul class='projects'>
-                <li class='project'>
-                    <a href='/popups'>
-                        <strong>Test 1</strong>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet id ipsum magnam obcaecati pariatur voluptatibus! Consectetur ipsa nobis nostrum porro?
-                        </p>
-                    </a>
-                </li>
-
-                <li class='project'>
-                    <a href='#'>
-                        <strong>Test 2</strong>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet id ipsum magnam obcaecati pariatur voluptatibus! Consectetur ipsa nobis nostrum porro?
-                        </p>
-                    </a>
-                </li>
+                <?php foreach ($dirs as $dir) {
+                    $projectName = ucfirst(basename($dir));
+                    $safeName = safeName($projectName);
+                    ?>
+                    <li class='project' data-project='<?php echo removeDocumentRootFromPath($dir) ?>'>
+                        <a href='/<?php echo $safeName; ?>'>
+                            <strong><?php echo $projectName; ?></strong>
+                            <p class='description'></p>
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
         </main>
+
+        <script>
+            document.querySelectorAll('.project').forEach(project => {
+                const projectName = project.dataset.project;
+                const description = project.querySelector('.description');
+                const url = `${projectName}/description.html`;
+
+                fetch(url)
+                    .then(response => response.text())
+                    .then(text => {
+                        description.innerHTML = text;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        description.innerHTML = '<em>Für dieses Projekt gibt es keine Zusammenfassung.</em>';
+                    });
+            });
+        </script>
 
     </body>
 </html>

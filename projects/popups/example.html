@@ -4,10 +4,56 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
         <title>Popups | CodeByMarvin</title>
+
+        <link rel="stylesheet" href="/style/css/global.min.css">
+        <link rel="stylesheet" href="./needed.css">
+
+        <script src='needed.js'></script>
+
+        <style>
+            main {
+                height: 100vh;
+                display: grid;
+                place-items: center;
+            }
+
+            strong {
+                font-size: 1.5rem;
+                margin-bottom: .5em;
+                display: inline-block;
+            }
+
+            .image {
+                margin-top: 2.5rem;
+                height: 300px;
+            }
+
+            .image img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        </style>
     </head>
     <body>
+
+        <div class='popups'>
+            <div class='popup' id='pop-1'>
+                <strong>Popup #1</strong>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, dolorem dolores eos laborum mollitia odio pariatur quas repellendus reprehenderit vitae?
+                </p>
+
+                <div class='image'>
+                    <img src='/images/placeholder.jpeg' alt='Platzhalter Bild'>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <button data-toggle-popup='pop-1'>Popup öffnen</button>
+        </main>
 
     </body>
 </html>

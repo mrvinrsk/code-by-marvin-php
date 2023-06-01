@@ -18,9 +18,29 @@ body {
 main {
   width: min(90%, 1400px);
   margin-inline: auto;
-  padding-block: min(7.5vw, 5rem);
+  padding-block: min(5vw, 5rem);
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5em;
+}
+
+button {
+  cursor: pointer;
+  background: var(--col-primary);
+  color: #FFF;
+  border: 1px solid var(--col-primary);
+  border-radius: 500px;
+  padding: .5rem 1rem;
+  transition-duration: 250ms;
+
+  @media screen and (min-width: 768px) {
+    color: var(--col-primary);
+    background: transparent;
+
+    &:hover {
+      background: var(--col-primary);
+      color: #FFF;
+    }
+  }
 }

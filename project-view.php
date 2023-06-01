@@ -6,6 +6,12 @@ if (!isset($params['project'])) {
 
 $project = strtolower($params['project']);
 $projectName = ucwords(str_replace("-", " ", $project));
+
+include_once "php/util.php";
+
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
+$url = $protocol . $_SERVER['HTTP_HOST'];
 ?>
 
 <!doctype html>
@@ -24,19 +30,29 @@ $projectName = ucwords(str_replace("-", " ", $project));
 
         <main>
             <?php
-            $frame = null;
-            switch ($project) {
-                case "popups":
-                    $frame = "/projects/popups/example.html";
-                    break;
-                default:
-                    break;
-            }
+            $frame = doesExist($url . "/projects/$project/example.html") ? $url . "/projects/$project/example.html" : null;
+            $shortDescription = doesExist($url . "/projects/$project/description.html") ? $url . "/projects/$project/description.html" : null;
+            $content = doesExist($url . "/projects/$project/content.html") ? $url . "/projects/$project/content.html" : null;
+            $js = doesExist($url . "/projects/$project/needed.js") ? $url . "/projects/$project/needed.js" : null;
+            $scss = doesExist($url . "/projects/$project/needed.scss") ? $url . "/projects/$project/needed.scss" : null;
+            $css = doesExist($url . "/projects/$project/needed.css") ? $url . "/projects/$project/needed.css" : null;
+            $markup = doesExist($url . "/projects/$project/needed.html") ? $url . "/projects/$project/needed.html" : null;
 
-            if (!is_null($frame)) { ?>
+            if (doesExist($url . "/projects/$project")) { ?>
 
                 <h1>Projekt: <?php echo $projectName; ?></h1>
-                <iframe src='<?php echo $frame; ?>'></iframe>
+                <p>
+                    <?php if (!is_null($shortDescription)) { ?>
+                        <?php include_once $shortDescription; ?>
+                    <?php } else { ?>
+                        <em>Für dieses Projekt gibt es keine Zusammenfassung.</em>
+                    <?php } ?>
+                </p>
+
+                <?php if (!is_null($frame)) { ?>
+                    <h2>Beispiel</h2>
+                    <iframe src="<?php echo $frame; ?>"></iframe>
+                <?php } ?>
 
             <?php } else { ?>
 
