@@ -41,9 +41,9 @@ $url = $protocol . $_SERVER['HTTP_HOST'];
             if (doesExist($url . "/projects/$project")) { ?>
 
                 <h1>Projekt: <?php echo $projectName; ?></h1>
-                <p>
+                <p class='description'>
                     <?php if (!is_null($shortDescription)) { ?>
-                        <?php include_once $shortDescription; ?>
+                        <?php echo file_get_contents($shortDescription); ?>
                     <?php } else { ?>
                         <em>Für dieses Projekt gibt es keine Zusammenfassung.</em>
                     <?php } ?>
