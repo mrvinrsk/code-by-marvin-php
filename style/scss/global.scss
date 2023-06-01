@@ -1,0 +1,19 @@
+@use "utils";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1E1E1E;
+  color: #FAFAFA;
+  font-family: sans-serif;
+}
+
+main {
+  width: min(90%, 900px);
+  margin-inline: auto;
+  padding-block: min(7.5vw, 5rem);
+}
