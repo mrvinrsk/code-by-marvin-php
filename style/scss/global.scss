@@ -22,6 +22,7 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: var(--col-primary);
   margin-bottom: .5em;
 }
 
@@ -45,4 +46,34 @@ button, .button {
       color: #FFF;
     }
   }
+}
+
+.hljs-tag .hljs-attr, .hljs-tag .hljs-name, .hljs-punctuation {
+  color: #A3A3A3;
+}
+
+.hljs {
+  background: #444;
+  color: #fff;
+}
+
+.hljs-comment {
+  color: #4abb33;
+}
+
+.hljs-section, .hljs-title, .hljs-addition, .hljs-built_in, .hljs-bullet, .hljs-code {
+  color: #ff884d;
+  font-weight: 700;
+}
+
+.hljs-deletion, .hljs-number, .hljs-quote, .hljs-selector-class, .hljs-selector-id, .hljs-string, .hljs-template-tag, .hljs-type {
+  color: #39e617;
+}
+
+.hljs-link, .hljs-operator, .hljs-regexp, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-symbol, .hljs-template-variable, .hljs-variable {
+  color: #ff5a0a;
+}
+
+.hljs-literal {
+  color: #f44375;
 }
