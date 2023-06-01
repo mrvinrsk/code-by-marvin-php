@@ -1,0 +1,108 @@
+:root {
+  --transition-duration: 0.425s;
+  --transition-duration-short: 0.1s;
+}
+
+body.popup-shown {
+  overflow: hidden;
+}
+
+.popups {
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition-duration: var(--transition-duration);
+}
+.popups.show {
+  opacity: 1;
+  backdrop-filter: blur(7px) brightness(0.6);
+  pointer-events: auto;
+}
+
+.popup {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+  transition-duration: var(--transition-duration);
+  width: 100%;
+  max-height: 85%;
+  overflow-y: auto;
+  background-color: #f3f3f3;
+  color: #333;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  left: 50%;
+  padding: 3rem 2rem 2rem;
+  border-radius: 30px 30px 0 0;
+  bottom: -85%;
+}
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+  bottom: 0;
+}
+@media screen and (min-width: 800px) {
+  .popup.show {
+    bottom: unset;
+  }
+}
+.popup .handle {
+  height: 5px;
+  width: 75px;
+  background: #000;
+  border-radius: 100px;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 1rem;
+  left: 50%;
+}
+@media screen and (min-width: 800px) {
+  .popup .handle {
+    display: none;
+  }
+}
+.popup .close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+@media screen and (min-width: 800px) {
+  .popup .close::before, .popup .close::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 5px;
+    background-color: #202020;
+    transition-duration: var(--transition-duration-short);
+  }
+  .popup .close::before {
+    transform: rotate(-45deg);
+  }
+  .popup .close::after {
+    transform: rotate(45deg);
+  }
+}
+@media screen and (min-width: 800px) {
+  .popup {
+    width: min(95%, 1200px);
+    border-radius: 10px;
+    bottom: unset;
+    top: 50%;
+    padding: 3rem;
+    transform: translate(-50%, -50%);
+  }
+}
+.popup img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=needed.css.map */
