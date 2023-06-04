@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const content__container = tabs__container.querySelector('.tab__content');
         const tabs = tabs__container.querySelectorAll('.tab__content .tab');
 
+        function resize(content__container, target) {
+            content__container.style.minHeight = `${target.offsetHeight}px`;
+        }
+
         buttons.forEach(button => {
             const target = document.querySelector(`.tab#${button.dataset.tab}`) || -1;
 
@@ -22,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 tabs.forEach(tab => tab.classList.remove('show'));
 
                 button.classList.add('show');
-                content__container.style.minHeight = `${target.offsetHeight}px`;
+                resize(content__container, target);
 
                 setTimeout(() => {
                     target.classList.add('show');
@@ -40,6 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 75);
                 }, 300);
             });
+
+            window.addEventListener('resize', () => {
+                resize(content__container, target);
+            }, false);
         });
 
         setTimeout(() => {
