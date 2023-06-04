@@ -62,7 +62,7 @@ $url = $protocol . $_SERVER['HTTP_HOST'];
                 <iframe src="<?php echo $frame; ?>" title="Example"></iframe>
             </div>
 
-            <h2>Erklärung</h2>
+            <h2>Weitere Informationen</h2>
             <p>
                 <?php echo file_get_contents($content); ?>
             </p>
@@ -72,7 +72,7 @@ $url = $protocol . $_SERVER['HTTP_HOST'];
                 <div class="code__container">
                     <?php if (!is_null($markup)) { ?>
                         <pre
-                            class="code markup"><code><?php echo htmlspecialchars(file_get_contents($markup)); ?></code></pre>
+                                class="code markup"><code><?php echo htmlspecialchars(file_get_contents($markup)); ?></code></pre>
                     <?php } else { ?>
                         <p>Kein HTML benötigt</p>
                     <?php } ?>

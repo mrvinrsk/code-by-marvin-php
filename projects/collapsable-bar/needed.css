@@ -1,0 +1,57 @@
+.fixed {
+  display: flex;
+  z-index: 997;
+  gap: 2rem;
+  width: 100%;
+  position: fixed;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  background: #801652;
+  color: #fff;
+  padding-block: 0.5rem;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
+  transition-duration: 250ms;
+}
+.fixed a {
+  color: inherit;
+  text-decoration: none;
+}
+.fixed.hidden {
+  transform: translateY(100%);
+  box-shadow: none;
+}
+
+.fixed:not(.hidden):not(.first) .handle::after {
+  opacity: 1;
+}
+
+.fixed .handle {
+  position: absolute;
+  z-index: -1;
+  top: -100%;
+  left: 0;
+  padding: 0.5em 1em;
+  background: #801652;
+  cursor: pointer;
+}
+.fixed .handle::before {
+  content: "KLICKE HIER";
+}
+.fixed .handle::after {
+  content: "X";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: #fdacc9;
+  color: #801652;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  transition-duration: 250ms;
+}
+
+/*# sourceMappingURL=needed.css.map */
