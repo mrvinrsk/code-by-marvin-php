@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs | CodeByMarvin</title>
+
+    <link rel="stylesheet" href="/style/css/global.min.css">
+    <link rel="stylesheet" href="/projects/tabs/needed.css">
+
+    <style>
+        .tabs {
+            margin-top: 2rem;
+        }
+
+        article {
+            margin-top: 3.5rem;
+        }
+
+        .tab h2 {
+            color: #fff;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        img:not(:last-child) {
+            margin-bottom: 2.5rem;
+        }
+
+        .tab p:not(:first-of-type) {
+            margin-top: 1.5rem;
+        }
+
+        .tab img+p {
+            margin-top: 0 !important;
+        }
+    </style>
+
+    <script src='/projects/tabs/needed.js'></script>
+</head>
+
+<body>
+
+<main>
+    <h1>Tabs</h1>
+    <p>
+        Tabs sind ein Gestaltungselement, welches verhindert, dass eine Seite zu sehr mit Content überladen wirkt.
+        Dies wird bewerkstelligt, indem man Texte in Tabs unterteilt, welche sich gegenseitig ausblenden. Damit, es
+        nicht so "stockend" wirkt, kann man die Tabs dabei noch animieren, wie hier im Beispiel gezeigt.
+    </p>
+
+    <div class="tabs">
+        <div class="tab__buttons">
+            <button data-tab="tab-1">Inhalt #1</button>
+            <button data-tab="tab-2">Inhalt #2</button>
+            <button data-tab="tab-3">Inhalt #3</button>
+        </div>
+        <div class="tab__content">
+            <div class="tab" id="tab-1">
+                <h2>Schönes Platzhalter-Bild</h2>
+                <p>Hier sehen Sie ein schönes Platzhalter-Bild.</p>
+
+                <img src="/images/placeholder.jpeg" alt="Platzhalter" title="Platzhalter">
+
+                <p>
+                    Klicke auf einen Button in der Navigation dieses Elementes, um zu einem anderen Tab zu wechseln
+                    und die mega fancy Animation sehen zu können.
+                </p>
+            </div>
+            <div class="tab" id="tab-2">
+                <h2>Tab #2</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, eos veritatis! Doloremque
+                    veritatis incidunt delectus.
+                </p>
+
+                <p>Weiterer Text ohne vorheriges Bild.</p>
+            </div>
+            <div class="tab" id="tab-3">
+                <h2>Tab #3</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit optio exercitationem accusantium,
+                    laboriosam ullam blanditiis in nihil quaerat officiis ipsa.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <article>
+        <h2>Weitere Elemente</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint iusto veritatis, esse quis fugiat nihil
+            ut maxime tenetur error explicabo. Tempora ea dolor in eius explicabo id blanditiis dolorum facere fugit
+            maiores ex quod, pariatur modi veritatis facilis aliquam voluptatum nisi vitae illo itaque? Sed
+            explicabo sapiente dolorem ducimus magni enim vel? Fugit deleniti temporibus dolor quasi vitae unde sed.
+        </p>
+    </article>
+</main>
+
+</body>
+
+</html>

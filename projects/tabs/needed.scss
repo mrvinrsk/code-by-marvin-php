@@ -1,0 +1,60 @@
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .tab__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    button.show {
+      background: var(--col-primary);
+      color: #FFF;
+    }
+  }
+
+  .tab__content {
+    position: relative;
+    transition-duration: 250ms;
+
+    .tab {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition-duration: 250ms;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 700px;
+      background: var(--col-primary);
+      padding: 1rem;
+      border-radius: 0 25px 25px 25px;
+      width: 100%;
+
+      &.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      >* {
+        opacity: 0;
+        transform: translateY(50px);
+        transition-duration: 250ms;
+      }
+
+      >.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
